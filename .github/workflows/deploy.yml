@@ -81,17 +81,20 @@ jobs:
         with:
           python-version: "3.13"
           cache: "pip" # caching pip dependencies
-      - name: Update _config.yml ⚙️
+      - name: Install system dependencies 🔧
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick python3-pip
+          pip3 install --upgrade jupyter nbconvert
+      - name: Update *config.yml ⚙️
         uses: fjogeleit/yaml-update-action@main
         with:
           commitChange: false
-          valueFile: "_config.yml"
+          valueFile: "*config.yml"
           propertyPath: "giscus.repo"
           value: ${{ github.repository }}
       - name: Install and Build 🔧
         run: |
-          sudo apt-get update && sudo apt-get install -y imagemagick
-          pip3 install --upgrade nbconvert
           export JEKYLL_ENV=production
           bundle exec jekyll build
       - name: Purge unused CSS 🧹
