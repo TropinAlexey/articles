@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<div class="back-link">
+  <a href="{{ '/blog/' | relative_url }}">&larr; Back to Blog</a> | 
+  <a href="{{ '/' | relative_url }}">&larr; Home</a>
+</div>
+
+<article>
+  <header>
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <h2 style="color: #666; font-weight: normal; margin-top: -10px;">{{ page.subtitle }}</h2>
+    {% endif %}
+    
+    <div class="meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+      {% if page.author %} • By {{ page.author }}{% endif %}
+      {% if page.description %}<br><em>{{ page.description }}</em>{% endif %}
+    </div>
+  </header>
+
+  <div class="content">
+    {{ content }}
+  </div>
+
+  {% if page.tags %}
+  <div class="tags">
+    <strong>Tags:</strong>
+    {% for tag in page.tags %}
+      <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</article>
+
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+  <a href="{{ '/blog/' | relative_url }}">&larr; Back to All Articles</a>
+</div>
