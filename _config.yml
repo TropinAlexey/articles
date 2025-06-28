@@ -4,10 +4,9 @@ description: Independent analysis and commentary on political and economic syste
 url: https://tropinalexey.github.io
 baseurl: /articles
 
-# Author settings
+# Author
 author:
   name: Alexey Tropin
-  email: 
 
 # Build settings
 markdown: kramdown
@@ -18,13 +17,7 @@ permalink: /blog/:year/:title/
 paginate: 5
 paginate_path: "/blog/page:num/"
 
-# Collections
-collections:
-  posts:
-    output: true
-    permalink: /blog/:year/:title/
-
-# Exclude files from processing
+# Exclude from processing
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -33,18 +26,8 @@ exclude:
   - vendor/
   - node_modules/
   - .github/
-  - cleanup-demo.sh
 
-# Include files
-include:
-  - _pages
-
-# GitHub Pages settings
-safe: true
-incremental: false
-
-# Plugins are automatically included with github-pages gem
-# Only list plugins that are whitelisted by GitHub Pages
+# Plugins (GitHub Pages safe)
 plugins:
   - jekyll-feed
   - jekyll-sitemap
